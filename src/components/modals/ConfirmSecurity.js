@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Modal, ScrollView, Image, Dimensions } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import { View, Text, StyleSheet, Modal, ScrollView, Image, Dimensions, TouchableOpacity } from 'react-native';
+import Icon from 'react-native-vector-icons/Feather';
 import Color from '../../constants/colors';
 import { HeaderClose } from './Header';
 import { main } from '../../themes/index';
@@ -11,7 +11,7 @@ import RippleButton from '../common/RippleButton';
 import ScaleSlideAnim from '../anim/ScaleSlideAnim';
 import PopUp from '../common/PopUp';
 let { width, height } = Dimensions.get('window');
-if(height > width) {
+if (height > width) {
     let s = width;
     width = height;
     height = s;
@@ -61,13 +61,35 @@ export default class ConfirmSecurity extends Component {
             <View style={styles.viewAbsolute}>
                 <ScaleSlideAnim>
                     <PopUp source={AppIcon.pop_up_3} width={width * 0.53} height={height * 0.7} style={{ alignItems: 'center', paddingTop: 20 }} close={() => this.props.closeCodePin(false)}>
-                        <Image source={AppIcon.title_baomattaikhoan} resizeMode='contain' style={{width: width*0.3, height: 30}}/>
+                        <Image source={AppIcon.title_baomattaikhoan} resizeMode='contain' style={{ width: width * 0.3, height: 30 }} />
                         {/* <HeaderClose typeCodePin={typeCodePin} onPress={() => this.props.closeCodePin(false)} /> */}
                         {!this.props.errors ? <Text style={styles.textTitle}>Vui lòng nhập mã bảo mật của Phụ huynh</Text>
-                         : <Text style={styles.errors}>{this.props.errors}</Text>}
+                            : <Text style={styles.errors}>{this.props.errors}</Text>}
                         <View style={styles.wrap}>
                             <View style={styles.wrapTextSecu}>
-                                <Text style={styles.textSecutity} numberOfLines={1}>{this.state.textSecutity}</Text>
+                                <Text
+                                    style={[styles.textSecutity]}
+                                    numberOfLines={1}
+                                >
+                                    {this.state.textSecutity}
+                                </Text>
+                                <TouchableOpacity
+                                    onPress={
+                                        () => {
+                                            let temp = this.state.textSecutity.split('');
+                                            temp.splice(temp.length - 1,1);
+                                            console.log('====================================');
+                                            console.log(temp);
+                                            console.log('====================================');
+                                            this.setState({
+                                                textSecutity: temp.join('')
+                                            })
+                                        }
+                                    }
+                                >
+
+                                    <Icon name={'delete'} size={20} style={{ alignSelf: 'center', marginRight: 10, }}></Icon>
+                                </TouchableOpacity>
                             </View>
                             <View style={styles.wrapNumbers}>
                                 <View style={styles.row}>
@@ -77,7 +99,7 @@ export default class ConfirmSecurity extends Component {
                                     <RippleButton onPress={() => this.hanleClick(4)} size={40} style={styles.cols}><Text style={styles.textNumber}>4</Text></RippleButton>
                                     <RippleButton onPress={() => this.hanleClick(5)} size={40} style={styles.cols}><Text style={styles.textNumber}>5</Text></RippleButton>
                                 </View>
-                                <View style={[styles.row, {marginTop: 10}]}>
+                                <View style={[styles.row, { marginTop: 10 }]}>
                                     <RippleButton onPress={() => this.hanleClick(6)} size={40} style={styles.cols}><Text style={styles.textNumber}>6</Text></RippleButton>
                                     <RippleButton onPress={() => this.hanleClick(7)} size={40} style={styles.cols}><Text style={styles.textNumber}>7</Text></RippleButton>
                                     <RippleButton onPress={() => this.hanleClick(8)} size={40} style={styles.cols}><Text style={styles.textNumber}>8</Text></RippleButton>
@@ -95,8 +117,8 @@ export default class ConfirmSecurity extends Component {
                                 </RippleButton> */}
                             </View>
                             {(this.state.textSecutity != '' && this.state.textSecutity.length > 2 && typeCodePin == 'confirm') &&
-                                <RippleButton onPress={() => this.submit()} size={40} style={{width: width* 0.18, alignSelf:'center', justifyContent:'center', alignItems:'center', height: 30, marginTop: 20}}>
-                                    <Image source={AppIcon.btn_dongy} resizeMode='contain' style={{width: width* 0.18}}/>
+                                <RippleButton onPress={() => this.submit()} size={40} style={{ width: width * 0.18, alignSelf: 'center', justifyContent: 'center', alignItems: 'center', height: 30, marginTop: 20 }}>
+                                    <Image source={AppIcon.btn_dongy} resizeMode='contain' style={{ width: width * 0.18 }} />
                                 </RippleButton>
                             }
                             {(this.state.textSecutity != '' && typeCodePin == 'add') &&
@@ -131,7 +153,7 @@ const styles = StyleSheet.create({
         padding: 5,
         backgroundColor: '#fff',
         marginTop: 10,
-        
+
     },
     errors: {
         color: 'red',
@@ -157,18 +179,23 @@ const styles = StyleSheet.create({
         marginTop: 5,
     },
     wrapTextSecu: {
+        flexDirection: 'row',
+        position: 'relative',
         backgroundColor: '#fff',
         height: 25,
+        width: 210,
         borderRadius: 8,
-        justifyContent: 'center',
+        justifyContent: 'flex-end',
+        alignItems: 'center',
         borderWidth: 1,
         borderColor: 'rgb(255, 160, 54)'
     },
     textSecutity: {
-        alignSelf: 'center',
+        position: 'absolute',
+        right: 90,
         fontFamily: 'Roboto-Bold',
         fontSize: 16,
-        color: 'black'
+        color: 'black',
     },
     wrap: {
         top: 0,

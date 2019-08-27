@@ -249,7 +249,7 @@ export default class ParentSettingTab extends Component {
                         this.setState({ isLoading: false });
                         this.setState({ imageUri: rp.urlAvatar });
                         Helper.saveParentAvatarUri(rp.urlAvatar);
-                        this.props.saveAvatarUriRedux({uri: `http:${rp.urlAvatar}`});
+                        this.props.saveAvatarUriRedux({ uri: `http:${rp.urlAvatar}` });
                         authService.postUpdateParent({ displayName, email, codePin, gender, birthday, token }).then(res => {
                             if (res != "") {
                                 const { status } = res;
@@ -504,7 +504,7 @@ const styles = StyleSheet.create({
         width: '100%',
         height: '80%',
         paddingBottom: 0,
-        paddingTop: 50
+        paddingTop: 50,
     },
     updateBtn: {
         width: '50%',
@@ -562,8 +562,8 @@ const styles = StyleSheet.create({
 
     },
     container: {
-        // flexDirection: 'row',
         justifyContent: 'center',
+
     },
     rowHalf: {
         flex: 1,
@@ -596,14 +596,21 @@ const styles = StyleSheet.create({
         borderColor: 'rgb(187, 206, 228)'
     },
     formInput: {
-        backgroundColor: 'rgb(230, 230, 230)',
+        position: 'absolute',
+        backgroundColor: '#FFF',
         fontSize: 12,
         borderRadius: 8,
-        marginHorizontal: 10,
+        marginLeft: 150,
         height: 36,
+        width: 240,
         paddingLeft: 20,
         marginBottom: 10,
         fontFamily: 'Roboto-MediumItalic',
+        fontWeight: 'bold',
+        borderRadius: 5,
+        borderWidth: 1,
+        borderColor: 'rgb(187, 206, 228)'
+
     },
     inputContainer: {
         alignItems: 'center',
@@ -615,6 +622,7 @@ const styles = StyleSheet.create({
     textInput: {
         fontSize: 13.6,
         fontFamily: 'Roboto-Bold',
+
     },
 });
 
@@ -635,7 +643,8 @@ const InputPlatform = ({ indexInput, onPress, placeholder = '', value, secureTex
                         keyboardType={keyboardType || 'default'}
                         pointerEvents="none"
                         secureTextEntry={value == '' ? false : secureTextEntry}
-                        value={value != '' ? value : placeholder} style={[styles.textInput, {
+                        value={value != '' ? value : placeholder}
+                        style={[styles.textInput, {
                             color: '#000'
                         }]} />
 
