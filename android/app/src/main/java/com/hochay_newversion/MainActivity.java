@@ -1,4 +1,4 @@
-package com.hochay_newversion;
+package com.hocmai.hochay0001;
 
 import com.facebook.react.ReactActivity;
 

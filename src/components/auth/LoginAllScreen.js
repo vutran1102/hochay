@@ -150,6 +150,7 @@ export default class LoginAllScreen extends Component {
                             console.log(response);
                             if (response !== "") {
                                 const { status } = response;
+                                console.log("response.access_token: " , response.access_token );
                                 if (status == 200) {
                                     Helper.saveToken(response.access_token);
                                     Helper.saveTokenParent(response.access_token);
@@ -247,17 +248,17 @@ export default class LoginAllScreen extends Component {
     }
 
     render() {
-        let widtdScreen = width;
+        let widthScreen = width;
         let heightScreen = height;
         return (
             <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false} style={styles.container}>
                 <ImageBackground source={AppIcon.background_main} style={{ width: '100%', height: '100%', alignItems: 'center' }} resizeMode='cover'>
                     <HeaderWithBg />
                     <View style={{ width: '100%', height: '100%', alignItems: 'center', position:'absolute' }}>
-                        <ImageBackground source={AppIcon.box_title} resizeMode='contain' style={{ width: widtdScreen * 0.42, height: heightScreen * 0.2, alignItems:'center' }}>
+                        <ImageBackground source={AppIcon.box_title} resizeMode='contain' style={{ width: widthScreen * 0.42, height: heightScreen * 0.2, alignItems:'center' }}>
                             <Image source={AppIcon.title_dangnhap} style={{width: '50%', position:'absolute', bottom: -5}} resizeMode='contain'/>
                         </ImageBackground>
-                        <ImageBackground source={AppIcon.pop_up_1} style={{ width: widtdScreen * 0.6, height: heightScreen * 0.7, paddingTop: 10, marginTop: 20 }} resizeMode='stretch'>
+                        <ImageBackground source={AppIcon.pop_up_1} style={{ width: widthScreen * 0.6, height: heightScreen * 0.7, paddingTop: 10, marginTop: 20 }} resizeMode='stretch'>
                             {!!this.state.errorsResult && <Text style={main.authValidate}>{this.state.errorsResult}</Text>}
                             {Object.keys(this.state.errors).length > 0 &&
                                 <Text style={main.authValidate}>{this.state.errors[0].field} {this.state.errors[0].error}</Text>
