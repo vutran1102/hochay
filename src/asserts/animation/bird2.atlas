@@ -1,0 +1,48 @@
+
+bird2.png
+size: 1024,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Folder2
+  rotate: false
+  xy: 2, 2
+  size: 319, 148
+  orig: 319, 148
+  offset: 0, 0
+  index: -1
+Folder4
+  rotate: false
+  xy: 324, 170
+  size: 140, 118
+  orig: 140, 118
+  offset: 0, 0
+  index: -1
+canh
+  rotate: false
+  xy: 2, 152
+  size: 320, 316
+  orig: 320, 316
+  offset: 0, 0
+  index: -1
+chan1
+  rotate: false
+  xy: 324, 290
+  size: 148, 178
+  orig: 148, 178
+  offset: 0, 0
+  index: -1
+chan2
+  rotate: false
+  xy: 608, 321
+  size: 108, 147
+  orig: 108, 147
+  offset: 0, 0
+  index: -1
+chan3
+  rotate: false
+  xy: 474, 308
+  size: 132, 160
+  orig: 132, 160
+  offset: 0, 0
+  index: -1
