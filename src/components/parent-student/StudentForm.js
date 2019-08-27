@@ -153,33 +153,21 @@ class StudentForm extends Component {
         const { gradeId, userName, displayName, gender, birthday, password, base64String } = this.state;
         if (userName == "") {
             this.refs.toast.show('Tên đăng nhập học sinh không được để trống ');
-            this.props.setIsSuccess(false);
-
         }
         if (displayName == "") {
             this.refs.toast.show('Tên học sinh không được để trống ');
-            this.props.setIsSuccess(false);
-
         }
         if (displayName.length < 4) {
             this.refs.toast.show('Tên đăng nhập phải có ít nhất 4 kí tự');
-            this.props.setIsSuccess(false);
-
         }
         if (password == "") {
             this.refs.toast.show('Mật khẩu không được để trống ');
-            this.props.setIsSuccess(false);
-
         }
         if (password.length < 4) {
             this.refs.toast.show('Mật khẩu phải có ít nhất 4 kí tự');
-            this.props.setIsSuccess(false);
-
         }
         if (birthday == "") {
             this.refs.toast.show('Ngày sinh không được để trống ');
-            this.props.setIsSuccess(false);
-
         }
         this.setState({ isLoading: true });
         Helper.getToken().then(token => {
@@ -209,7 +197,7 @@ class StudentForm extends Component {
                                 this.setState({ isLoading: false });
                                 this.props.backCallback()
                             }).catch(rp => {
-                                this.props.setIsSuccess(true);                                
+                                this.props.setIsSuccess(true);
                             })
                             // this.props.fetchListChild({ token });
                             this.setState({ isLoading: true });
@@ -286,7 +274,7 @@ class StudentForm extends Component {
         return (
             <TouchableWithoutFeedback style={{ flex: 1 }} onPress={() => { Keyboard.dismiss() }}>
                 <View style={styles.rootView}>
-                    <TextInputForm title={'Tên học sinh'} onChangeText={this.onDisplayNameChange.bind(this)} value={this.state.displayName}/>
+                    <TextInputForm title={'Tên học sinh'} onChangeText={this.onDisplayNameChange.bind(this)} value={this.state.displayName} />
                     <View style={styles.formDateContainer}>
                         <Text style={styles.label}>Ngày sinh</Text>
                         <View style={{ position: 'absolute', right: 10 }}>
