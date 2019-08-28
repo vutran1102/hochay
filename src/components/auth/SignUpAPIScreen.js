@@ -242,7 +242,7 @@ export default class SignUpAPISceen extends Component {
 
     onValueChange(value) {
         console.log("value: ", value);
-        this.setState({gender: value});
+        this.setState({ gender: value });
     }
 
     render() {
@@ -280,16 +280,18 @@ export default class SignUpAPISceen extends Component {
                                     // textStyle={{ fontFamily: 'Roboto-MediumItalic', fontSize: 12 }}
                                     onChangeText={(item) => this.onValueChange(item)}
                                 />
-                                <FormDate
-                                    width={370}
-                                    // label={'Ngày sinh'}
-                                    icon={AppIcon.icon_calender}
-                                    value={this.state.birthday}
-                                    name={'birthday-cake'}
-                                    onPress={() => {
-                                        this.showDateTimePicker()
-                                    }}
-                                />
+
+                                <View style={{ marginLeft: 10 }}>
+                                    <FormDate
+                                        width={370}
+                                        icon={AppIcon.icon_calender}
+                                        value={this.state.birthday}
+                                        name={'birthday-cake'}
+                                        onPress={() => {
+                                            this.showDateTimePicker()
+                                        }}
+                                    />
+                                </View>
                                 <InputPlatform
                                     width={370}
                                     onChangeText={text => this.setState({ email: text })}

@@ -168,7 +168,7 @@ class StatisticalScreen extends Component {
                         <HeaderParent displayName={'Thống kê học tập'} leftCallback={this.onbackPress.bind(this)} rightCallback={() => { }} />
                         {/* <Header title={'Thống kê học tập'} onPress={this.onbackPress.bind(this)} /> */}
                         <View style={styles.wrapContent}>
-                            {this.props.listPackage.length && <View style={{ flex: 1 }}>
+                            {!!this.props.listPackage.length && <View style={{ flex: 1 }}>
                                 <View key={this.state.btnTabActive} style={{ marginTop: 0, height: 60, width: '100%', flexDirection: 'row', alignItems: 'center', paddingLeft: 20 }}>
                                     {/* <FlatList
                                         key={this.state.btnTabActive}

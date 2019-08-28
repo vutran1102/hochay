@@ -19,7 +19,6 @@ import { convertToBase64 } from '../../utils/Common';
 import LoadingScreen from '../common/LoadingScreen';
 import { updateAvatar } from '../../services/parentService';
 
-
 const dataGenderDropdown = [{
     label: 'Nam',
     value: 'NAM',

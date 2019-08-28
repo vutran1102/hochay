@@ -10,8 +10,7 @@ import ParentNoti from './ParentNoti';
 import Helper from '../../utils/Helpers';
 import BottomTabCustom from './BottomTabCustom';
 import BackgroundParent from './BackgroundParent';
-
-
+import { BackHandler, Platform } from "react-native"
 export default class StudentList extends Component {
     constructor(props) {
         super(props);
@@ -44,6 +43,11 @@ export default class StudentList extends Component {
         Orientation.lockToPortrait();
         this.props.saveStackNavigator(this.props.navigation);
         this.setState({ isHideCreatePopUp: !this.props.isCreateChild });
+        if (Platform.OS == "android") {
+            BackHandler.addEventListener("hardwareBackPress", () => {
+              return true;
+            })
+          }
     }
 
     _handleAppStateChange = (nextAppState) => {
@@ -106,8 +110,8 @@ export default class StudentList extends Component {
                             </View>
                             <View style={styles.flatListWrap} >
                                 {/* <Image source={AppIcon.default_avatar} style={{ width: 104, height: 104, borderRadius: 52, borderWidth: 1.5, borderColor: 'rgb(4, 166, 255)', alignSelf: 'center', position: 'absolute', top: -52 }} /> */}
-                                <RippleButton style={{ width: 104, height: 104, borderRadius: 52,  alignSelf: 'center', position: 'absolute', top: -52 }} radius={52} onPress={()=>{this.goBack()}}>
-                                    <Image source={this.props.parentAvatarRedux ? { uri: `${this.props.parentAvatarRedux}` } : AppIcon.default_avatar} style={{ width: 104, height: 104, borderRadius: 52, borderWidth: 1.5, borderColor: 'rgb(4, 166, 255)'}} resizeMode='contain' />
+                                <RippleButton style={{ width: 104, height: 104, borderRadius: 52, alignSelf: 'center', position: 'absolute', top: -52 }} radius={52} onPress={() => { this.goBack() }}>
+                                    <Image source={this.props.parentAvatarRedux ? { uri: `${this.props.parentAvatarRedux}` } : AppIcon.default_avatar} style={{ width: 104, height: 104, borderRadius: 52, borderWidth: 1.5, borderColor: 'rgb(4, 166, 255)' }} resizeMode='contain' />
                                 </RippleButton>
 
                                 <ScrollView>

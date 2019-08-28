@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, WebView, Platform, Keyboard, Text, Dimensions, Vibration, StatusBar, Image, ImageBackground } from 'react-native';
+import { View, StyleSheet, WebView, Platform, Keyboard, Text, Dimensions, Vibration, StatusBar, Image, ImageBackground, Alert } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Fond from 'react-native-vector-icons/Foundation';
 import Orientation from 'react-native-orientation';
@@ -267,6 +267,9 @@ export default class PracticeLearnScreen extends Component {
     }
 
     handleMessage(event) {
+        console.log('====================================');
+        console.log('onMessage');
+        console.log('====================================');
         let data = event.nativeEvent.data.split('###');
         let type_view = data[0];
         //Nhập nhiều input
@@ -586,7 +589,7 @@ export default class PracticeLearnScreen extends Component {
         // }, () => {
         //     this.refs.confirmsubmitmodal.setModalVisible(true, testId);
         // });
-        this.setState({showGameOver: true});
+        this.setState({ showGameOver: true });
     }
 
     componentWillUnmount() {
@@ -595,7 +598,7 @@ export default class PracticeLearnScreen extends Component {
         this.keyboardDidHideListener.remove();
         this.clearMyLoading();
         this.clearTimeCount();
-        this.setState({showGameOver: false});
+        this.setState({ showGameOver: false });
 
     }
 
@@ -620,7 +623,7 @@ export default class PracticeLearnScreen extends Component {
                     </ImageBackground>
                     <ImageBackground source={AppIcon.box_info} style={{ width: 148.4, height: 65, alignItems: 'center', paddingTop: 20 }} resizeMode='contain'>
                         <Image source={AppIcon.text_thoigian} style={{ width: '50%', height: '30.5%' }} resizeMode='contain' />
-                        <View style={{ marginTop: 3, flexDirection: 'row', width: 150 , paddingHorizontal: 30}}>
+                        <View style={{ marginTop: 3, flexDirection: 'row', width: 150, paddingHorizontal: 30 }}>
                             <Image source={AppIcon.icn_dongho} style={{ width: 20, height: 20, marginLeft: 2, alignSelf: 'center' }} resizeMode='contain' />
                             <Text style={{ color: '#FF0000', fontWeight: '900', fontSize: 17, marginLeft: 10 }}>{Common.convertSeconds(this.state.timeCount)}</Text>
                         </View>
@@ -638,8 +641,8 @@ export default class PracticeLearnScreen extends Component {
                     </ImageBackground>
                 </View>
                 <Container style={styles.container}>
-                    <PopUp source={AppIcon.pop_up_6} width={0.95 * width} height={0.86 * height} style={{ paddingTop: 40, alignSelf: 'center', justifyContent: 'center', position: 'absolute', bottom: 8, alignSelf: 'center' }} resizeMode='stretch'>
-                        <View style={styles.contents}>
+                    <PopUp source={AppIcon.pop_up_6} width={0.95 * width} height={0.86 * height} style={{ paddingTop: 40, alignSelf: 'center', justifyContent: 'center',bottom: 8, alignSelf: 'center' }} resizeMode='stretch'>
+                        <View style={[styles.contents]}>
                             {(isMounted && dataResult != '' && dataResult != undefined) &&
                                 <WebView
                                     ref={(webView) => this.webView = webView}
@@ -647,7 +650,7 @@ export default class PracticeLearnScreen extends Component {
                                     scalesPageToFit={false}
                                     scrollEnabled
                                     onMessage={this.handleMessage.bind(this)}
-                                    style={styles.webviewStyle}
+                                    style={[styles.webviewStyle]}
                                     source={{
                                         html: MathJaxLibs.renderMathJaxPractice(
                                             this.state.dataResult,
@@ -684,7 +687,7 @@ export default class PracticeLearnScreen extends Component {
                                                 :
                                                 <RippleButton style={{ width: 175, height: 38, alignSelf: 'center' }} onPress={() => this.handleanswerAction(typeAction)}>
                                                     <Image source={AppIcon.btn_ketthuc} style={{ width: 175, height: 38 }} resizeMode='contain' />
-                                                </RippleButton>}
+                                                </RippleButton>
                                     }
                                     {/* <Button width={100} title={'Câu tiếp theo'} /> */}
                                 </View>

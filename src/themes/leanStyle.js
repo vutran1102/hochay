@@ -32,8 +32,9 @@ module.exports = {
         width: '95%',
         height: '90%',
         alignSelf: 'center',
-        position: 'relative',
+        // position: 'relative',
         top: -20,
+
     },
     webviewStyle: {
         flex: 1,

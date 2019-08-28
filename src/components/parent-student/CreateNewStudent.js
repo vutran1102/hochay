@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
         width: width,
         height: 44,
         position: 'absolute',
-        bottom: -60,
+        bottom: 0,
         alignItems: 'center',
     },
     wrapCotainer: {

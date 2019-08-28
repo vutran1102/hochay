@@ -217,7 +217,7 @@ class PathwayLearningListScreen extends Component {
                                 <Text style={styles.updatelb}>Cập nhật lại lộ trình</Text>
                             </RippleButton>
                             <View style={styles.containerDropdown}>
-                                {this.makeDataDropdown().length && <Dropdown
+                                {!!this.makeDataDropdown().length && <Dropdown
                                     data={this.makeDataDropdown()}
                                     containerStyle={{ width: 160, height: 30 }}
                                     rippleInsets={{ top: 0, bottom: 0 }}
@@ -242,7 +242,7 @@ class PathwayLearningListScreen extends Component {
                                 />}
                             </View>
                         </View>
-                        {this.makeDataDropdown().length && <FlatList
+                        {!!this.makeDataDropdown().length && <FlatList
                             data={this.props.listPathway.length ? (this.props.listPathway) : []}
                             keyExtractor={(item, index) => index.toString()}
                             renderItem={({ item, index }) => {
@@ -291,7 +291,7 @@ class PathwayLearningListScreen extends Component {
                                 )
                             }}
                         />}
-                        {!this.makeDataDropdown().length && <Text style={{ fontFamily: 'Roboto-Bold', fontSize: 20 }}>Hãy đăng ký gói học cho con!</Text>}
+                        {!!this.makeDataDropdown().length == false && <Text style={{ fontFamily: 'Roboto-Bold', fontSize: 20 }}>Hãy đăng ký gói học cho con!</Text>}
                     </View>
                     {this.state.isShowPopupUpdate && <View style={styles.blackOverLay}>
                         <View style={styles.popUpUpdate}>
@@ -339,7 +339,7 @@ class PathwayLearningListScreen extends Component {
                 />
                 <Toast ref="toast" position={'top'} />
                 {this.state.isShowUpdatePathwayScreen && <UpdatePathwayScreen backCallback={() => { this.setState({ isShowUpdatePathwayScreen: false }) }} packageCode={this.state.packageCode} time={this.state.time} subjectName={this.state.subjectName} userId={this.props.userId} configId={this.props.configId} idItem={this.state.idItem} />}
-                <LoadingTransparent isLoading={this.props.isLoading || this.state.isLoading} bgColor='rgba(0,0,0,0.5)' />
+                {/* <LoadingTransparent isLoading={this.props.isLoading || this.state.isLoading} bgColor='rgba(0,0,0,0.5)' /> */}
             </View>
         );
     }
